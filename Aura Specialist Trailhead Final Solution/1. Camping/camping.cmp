@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <lightning:card>
+    	<c:campingHeader />
+    	<c:campingList />
+    </lightning:card>
+</aura:component>

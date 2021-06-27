@@ -1,0 +1,52 @@
+<aura:component >
+    
+    <aura:attribute name="newItem" type="Camping_Item__c" 
+                    default="{'sobjectType' : 'Camping_Item__c',
+                             'Name': '',
+                             'Quantity__c':0,
+                             'Price__c':0,
+                             'Packed__c':false}" />
+    
+    <aura:registerEvent name="addItem" type="c:addItemEvent" />
+
+    <!-- Boxed Area -->
+    <fieldset class="slds-box slds-theme--default slds-container--small">
+    	<legend id="newCampingItemForm" class="slds-text-heading--small slds-p-vertical--medium">
+        	Add Camping Item
+        </legend>
+        
+        <!-- Camping Item Form -->
+        <form class="slds-form--stacked">
+        	<lightning:input aura:id="itemform"
+                             label="Name"
+                             value="{!v.newItem.Name}"
+                             required="true"
+                             messageWhenValueMissing="Name is required" />
+            
+            <lightning:input type="Number"
+                             aura:id="itemform"
+                             label="Quantity"
+                             value="{!v.newItem.Quantity__c}"
+                             min="1"
+                             required="true"
+                             messageWhenValueMissing="Quantity is required" />
+            
+            <lightning:input type="Number"
+                             aura:id="itemform"
+                             label="Price"
+                             value="{!v.newItem.Price__c}"
+                             formatter="currency"
+                             step="0.1" />
+            
+            <lightning:input type="Checkbox"
+                             aura:id="itemform"
+                             label="Packed?"
+                             name="Packed"
+                             checked="{!v.newItem.Packed__c}" />
+            
+            <lightning:button label="Creare Camping Item"
+                              variant="brand"
+                              onclick="{!c.clickCreateItem}" />
+        </form>
+    </fieldset>
+</aura:component>
